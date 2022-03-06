@@ -1,12 +1,12 @@
 # closer
 
-### Основной функционал
+## Основной функционал
 
-## func RunOut(cmdCtx context.Context, param []string) ([]byte, error)
+### func RunOut(cmdCtx context.Context, param []string) ([]byte, error)
 Возвращает + выводит в стандартный поток ввода результат выполнения комманды,
 переданной в качестве аргумента param.
 
-## func Run(cmdCtx context.Context, param []string) ([]byte, error)
+### func Run(cmdCtx context.Context, param []string) ([]byte, error)
 Возвращает результат выполнения комманды, переданной в качестве аргумента param.
 
 В случае не удачного выполнения команды, финкции Run и RunOut возвращают в параметре error копию результата
