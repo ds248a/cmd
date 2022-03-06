@@ -33,26 +33,11 @@ func main() {
 	fmt.Printf("out: %s\n", string(out))
 
 	// Результат выполнения
+
 	// err: ls: invalid option -- '!'
 	// Try 'ls --help' for more information.
+	// out:
 
 }
 
-```
-
-### Объектная и кроспакетная обработка
-
-Пример выше - образец кроспакетной обработки. Следующий вариант - объектный.
-
-```go
-import (
-  "github.com/ds248a/closer"
-)
-
-func main() {
-  c := closer.NewCloser()
-  c.Add(cc.Clear)
-  c.Add(pg.Close)
-  c.ListenSignal(syscall.SIGTERM)
-}
 ```
