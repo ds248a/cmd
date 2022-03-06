@@ -123,29 +123,3 @@ func cmdStd(ctx context.Context, src io.Reader, dst *bytes.Buffer, out io.Writer
 
 	return
 }
-
-//
-func logCmdStd(ctx context.Context, l *log.Logger, std io.Reader) {
-	bs := make([]byte, 4096)
-
-	for {
-		select {
-		case <-ctx.Done():
-			return
-		default:
-		}
-
-		n, err := std.Read(bs)
-		if err != nil {
-			return
-		}
-
-		nBs := bs[0:n]
-
-		if nBs[len(nBs)-1] == '\n' {
-			l.Print(len(nBs), string(nBs))
-		} else {
-			l.Println(len(bs), string(bs))
-		}
-	}
-}
