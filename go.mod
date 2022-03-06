@@ -1,3 +1,3 @@
-module cmd
+module github.com/ds248a/cmd
 
-go 1.17
+go 1.16
