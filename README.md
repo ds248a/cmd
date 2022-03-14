@@ -27,17 +27,27 @@ func main() {
 	ctx, close := context.WithTimeout(context.Background(), time.Duration(1)*time.Second)
 	defer close()
 
-	out, err := cmd.RunOut(ctx, []string{"ls", "-!", "."})
-
+	out, err := cmd.Run(ctx, []string{"ls", "-!", "."})
 	fmt.Printf("err: %v\n", err)
 	fmt.Printf("out: %s\n", string(out))
+/*
+err: ls: invalid option -- '!'
+Try 'ls --help' for more information.
 
-	// Результат выполнения
+out:
+*/
 
-	// err: ls: invalid option -- '!'
-	// Try 'ls --help' for more information.
-	// out:
+	out, err := cmd.RunOut(ctx, []string{"ls", "-!", "."})
+	fmt.Printf("err: %v\n", err)
+	fmt.Printf("out: %s\n", string(out))
+/*
+ls: invalid option -- '!'
+Try 'ls --help' for more information.
 
+err: ls: invalid option -- '!'
+Try 'ls --help' for more information.
+
+out: 
+*/
 }
-
 ```
