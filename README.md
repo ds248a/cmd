@@ -1,16 +1,15 @@
 # cmd
 
-## Выполнение команд с подробным выводом ошибок исполнения
+## Executing commands with verbose execution error output
 
 ### func RunOut(cmdCtx context.Context, param []string) ([]byte, error)
-Возвращает + выводит в стандартный поток ввода результат выполнения команды,
-переданной в качестве аргумента param.
+Returns + prints to standard input the result of executing the command passed as the 'param' argument.
 
 ### func Run(cmdCtx context.Context, param []string) ([]byte, error)
-Возвращает результат выполнения команды, переданной в качестве аргумента param.
+Returns the result of executing the command passed as the 'param' argument.
 
-В случае не удачного выполнения команды, финкции Run() и RunOut() возвращают в параметре error копию результата
-вывода из стандартного потока ошибок. Смотрите пример ниже.
+If the command fails, the Run() and RunOut() functions return in the error parameter a copy of the output result from the standard error stream.
+See example below. 
 
 ```go
 package main
@@ -27,27 +26,30 @@ func main() {
 	ctx, close := context.WithTimeout(context.Background(), time.Duration(1)*time.Second)
 	defer close()
 
-	out, err := cmd.Run(ctx, []string{"ls", "-!", "."})
+	_, err := cmd.Run(ctx, []string{"ls", "-!", "."})
 	fmt.Printf("err: %v\n", err)
-	fmt.Printf("out: %s\n", string(out))
 /*
+  remote out -> redirect to Err Message
+------------------------
+
+  cmd err
+------------------------
 err: ls: invalid option -- '!'
 Try 'ls --help' for more information.
-
-out:
 */
 
-	out, err := cmd.RunOut(ctx, []string{"ls", "-!", "."})
+	_, err := cmd.RunOut(ctx, []string{"ls", "-!", "."})
 	fmt.Printf("err: %v\n", err)
-	fmt.Printf("out: %s\n", string(out))
 /*
+  remote out
+------------------------
 ls: invalid option -- '!'
 Try 'ls --help' for more information.
 
+  cmd err
+------------------------
 err: ls: invalid option -- '!'
 Try 'ls --help' for more information.
-
-out: 
 */
 }
 ```
