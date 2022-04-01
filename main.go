@@ -10,7 +10,7 @@ import (
 	"os/exec"
 )
 
-// Run возвращает результат выполнения комманды
+// Run returns the result of the command.
 func Run(cmdCtx context.Context, param []string) ([]byte, error) {
 	cmd := exec.CommandContext(cmdCtx, param[0], param[1:]...)
 	if cmd.Stdout != nil {
@@ -53,7 +53,7 @@ func Run(cmdCtx context.Context, param []string) ([]byte, error) {
 	return b.Bytes(), err
 }
 
-// RunOut возвращает + выводит в поток вывода результат выполнения кoмманды определенной атребутом param.
+// RunOut returns + outputs to the output stream the result of executing the command specified by the 'param' attribute.
 func RunOut(cmdCtx context.Context, param []string) ([]byte, error) {
 	cmd := exec.CommandContext(cmdCtx, param[0], param[1:]...)
 
