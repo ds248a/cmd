@@ -29,10 +29,10 @@ func main() {
 	_, err := cmd.Run(ctx, []string{"ls", "-!", "."})
 	fmt.Printf("err: %v\n", err)
 /*
-  remote out -> redirect to Err Message
+  out -> redirect to Err Message
 ------------------------
 
-  cmd err
+  err
 ------------------------
 err: ls: invalid option -- '!'
 Try 'ls --help' for more information.
@@ -41,12 +41,12 @@ Try 'ls --help' for more information.
 	_, err := cmd.RunOut(ctx, []string{"ls", "-!", "."})
 	fmt.Printf("err: %v\n", err)
 /*
-  remote out
+  out
 ------------------------
 ls: invalid option -- '!'
 Try 'ls --help' for more information.
 
-  cmd err
+  err
 ------------------------
 err: ls: invalid option -- '!'
 Try 'ls --help' for more information.
