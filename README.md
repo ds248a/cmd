@@ -2,11 +2,11 @@
 
 Executing commands with verbose execution error output
 
-### func RunOut(cmdCtx context.Context, param []string) ([]byte, error)
-Returns + prints to standard input the result of executing the command passed as the 'param' argument.
-
 ### func Run(cmdCtx context.Context, param []string) ([]byte, error)
 Returns the result of executing the command passed as the 'param' argument.
+
+### func RunOut(cmdCtx context.Context, param []string) ([]byte, error)
+Returns + prints to standard input the result of executing the command passed as the 'param' argument.
 
 If the command fails, the Run() and RunOut() functions return in the error parameter a copy of the output result from the standard error stream.
 See example below. 
