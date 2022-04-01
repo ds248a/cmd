@@ -1,6 +1,6 @@
 # cmd
 
-## Executing commands with verbose execution error output
+Executing commands with verbose execution error output
 
 ### func RunOut(cmdCtx context.Context, param []string) ([]byte, error)
 Returns + prints to standard input the result of executing the command passed as the 'param' argument.
